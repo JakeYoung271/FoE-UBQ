@@ -1,0 +1,3 @@
+from FoE import FoE
+obj = FoE("g")
+obj.RunUBQ(10)
