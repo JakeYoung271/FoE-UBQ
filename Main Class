@@ -1,0 +1,75 @@
+import pyautogui
+import time
+import random as r
+
+def sec(p=0.93):
+    k = r.randint(-100,100)/1000
+    t = p+k
+    time.sleep(t)
+    print(t)
+
+
+class FoE:
+
+
+    def __init__(self,city):
+        self.city=city
+
+
+    def toUBQ1(self):
+        pyautogui.moveTo(618,1149)
+        for i in range(6):
+            sec()
+            pyautogui.click()
+        pyautogui.moveTo(604,1271)
+        sec()
+        pyautogui.click()
+        sec()
+    def toUBQ2(self):
+        pyautogui.moveTo(656,1214)
+        for i in range(5):
+            pyautogui.click()
+            sec()
+    def UBQ(self,offset=0):
+        pyautogui.moveTo(928,1023)
+        pyautogui.click()
+        sec()
+        pyautogui.moveTo(925,1169)
+        pyautogui.click()
+        sec()
+        pyautogui.moveTo(1179,1080+offset)
+        pyautogui.click()
+        sec()
+    def clear(self):
+        sec(0.5)
+        x,y = pyautogui.position()
+        color = pyautogui.pixel(x,y)
+        if color != (181, 136, 59):
+            pyautogui.moveTo(56,1290)
+            pyautogui.click()
+    def RunUBQ(self,times):
+        #print("Align up and left in split screen")
+        if self.city.lower()=="g":
+            for i in range(times):
+                self.toUBQ1()
+                self.UBQ()
+                self.clear()
+                #print(i)
+        elif self.city.lower()=="c":
+            for i in range(times):
+                self.toUBQ2()
+                self.UBQ(12)
+                self.clear()
+                #print(i)
+    def aid(self,times):
+        print("Align down and right in split screen")
+        sec(0.7)
+        for p in range(times):
+            for i in range(5):
+                pyautogui.moveTo(282+i*214,1655)
+                pyautogui.click()
+                sec(0.7)
+            pyautogui.moveTo(1498,1552)
+            pyautogui.click()
+            sec(0.7)
+
